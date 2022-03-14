@@ -1,0 +1,118 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<ion-content *ngIf="!loading">
+
+  <form *ngIf="segmentView === 'login' ">
+
+    <ion-grid>
+      <ion-row>
+        <ion-label color="secondary">Email</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-item class="ion-no-padding">
+            <ion-label>
+              <ion-icon color="secondary" size="large" name="mail-outline"></ion-icon>
+            </ion-label>
+            <ion-input  type="email"
+                        [(ngModel)]="loginModel.email"
+                        name="email">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-label color="secondary">Password</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-item class="ion-no-padding">
+            <ion-label>
+              <ion-icon color="secondary" size="large" name="lock-closed-outline"></ion-icon>
+            </ion-label>
+            <ion-input  [(ngModel)]="loginModel.password"
+                        [type]="showPassword ? 'text' : 'password' "  
+                        name ="password">
+            </ion-input>
+            <ion-buttons>
+              <ion-button (click)="togglePassword()">
+                <ion-icon color="secondary" name="eye-off-outline" [name]="passwordToggleIcon"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-button class="ion-margin-vertical ion-text-uppercase col" expand="block" (click)="login()">Login</ion-button>          
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 2em;">
+        <ion-label color="tertiary" (click)="viewTypeForm('signup')">
+          are you new here? <a> Sign Up </a> 
+        </ion-label>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+  <form *ngIf="segmentView === 'signup' ">
+
+    <ion-grid>
+      <ion-row>
+        <ion-label color="secondary">Email</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-item class="ion-no-padding">
+            <ion-label>
+              <ion-icon color="secondary" size="large" name="mail-outline"></ion-icon>
+            </ion-label>
+            <ion-input  type="email"
+                        [(ngModel)]="loginModel.email"
+                        name="email">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-label color="secondary">Password</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-item class="ion-no-padding">
+            <ion-label>
+              <ion-icon color="secondary" size="large" name="lock-closed-outline"></ion-icon>
+            </ion-label>
+            <ion-input  [(ngModel)]="loginModel.password"
+                        [type]="showPassword ? 'text' : 'password' "  
+                        name ="password">
+            </ion-input>
+            <ion-buttons>
+              <ion-button (click)="togglePassword()">
+                <ion-icon color="secondary" name="eye-off-outline" [name]="passwordToggleIcon"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size=12>
+          <ion-button class="ion-margin-vertical ion-text-uppercase col"
+                  expand="block"
+                  (click)="signUp()">
+                  Sign Up
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 2em;">
+        <ion-label color="tertiary" class="title bolder" (click)="viewTypeForm('login')">
+          are you registered?  
+          <a> Login </a> 
+        </ion-label>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+</ion-content>
