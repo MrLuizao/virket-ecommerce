@@ -1,0 +1,8 @@
+{
+  "name": "virket-ecommerce",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "9629cd21"
+}
