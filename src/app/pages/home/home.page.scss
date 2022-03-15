@@ -1,0 +1,22 @@
+section{
+    padding: 0.5em;
+}
+img{
+    min-height: 227px;
+    max-height: 227px;
+    width: fit-content;
+}
+ion-card-subtitle{
+    min-height: 70px;
+}
+ion-card{
+    margin: 0.5em;
+}
+.btn-add{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    font-size: medium;
+    justify-content: flex-end;
+}
+

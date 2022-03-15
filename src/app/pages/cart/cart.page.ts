@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorService } from 'src/app/Services/behavior.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartPage implements OnInit {
 
-  constructor() { }
+  cartProducts = [];
+
+  constructor( public behaviorSrv: BehaviorService ) { }
 
   ngOnInit() {
+    this.behaviorSrv.$getArrayList.subscribe( (items)=>{
+      
+      this.cartProducts = items
+      console.log('this.cartProducts:', this.cartProducts);
+    });
+  }
+
+  deleteProductItem(){
+    this.cartProducts.pop()
+    this.behaviorSrv.bindingProductsArray(this.cartProducts)
   }
 
 }

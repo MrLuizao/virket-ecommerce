@@ -11,4 +11,33 @@
 
 <ion-content>
 
+  <ion-grid>
+    <ion-row>
+  
+      <ion-col size="6" *ngFor="let item of listModel">
+        <ion-card>
+          <img [src]="item.image"/>
+          <section>
+            <ion-row>
+              <p>{{item.category}}</p>
+              <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+            </ion-row>
+            <ion-row>
+              <p class="cost-prod"> {{item.price | currency: 'USD'}}</p>          
+            </ion-row>
+            <ion-row>
+              <ion-col class="btn-add" (click)="setProductCart(item)">
+                <span>
+                  add to cart <ion-icon name="add-circle-outline"></ion-icon> 
+                </span> 
+              </ion-col>
+            </ion-row>
+          </section>
+
+        </ion-card>      
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

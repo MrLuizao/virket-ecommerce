@@ -10,12 +10,10 @@ export class AuthService {
   constructor( public afAuth: AngularFireAuth ) { }
 
   loginUser( modelParam: LoginModel){
-    console.log('model by param:', modelParam);
     return this.afAuth.signInWithEmailAndPassword( modelParam.email, modelParam.password );
   }
 
   signUpUser( modelParam: LoginModel ){
-    console.log('model by param:', modelParam);
     return this.afAuth.createUserWithEmailAndPassword( modelParam.email, modelParam.password );
   }
 
