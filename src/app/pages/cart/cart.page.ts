@@ -9,14 +9,18 @@ import { BehaviorService } from 'src/app/Services/behavior.service';
 export class CartPage implements OnInit {
 
   cartProducts = [];
+  arrayPrices = [];
+  totalPrice: number;
 
   constructor( public behaviorSrv: BehaviorService ) { }
 
   ngOnInit() {
     this.behaviorSrv.$getArrayList.subscribe( (items)=>{
       
-      this.cartProducts = items
-      console.log('this.cartProducts:', this.cartProducts);
+      this.cartProducts = items;
+      this.arrayPrices = this.cartProducts.map( item => {return item.price});
+      this.totalPrice = this.arrayPrices.reduce((a, b) => a + b, 0);
+
     });
   }
 

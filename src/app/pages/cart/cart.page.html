@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-grid>
-    <h1 *ngIf="cartProducts.length == 0"> No Items in Cart</h1>
+    <h1 *ngIf="cartProducts.length == 0"> No items in the cart</h1>
     <ion-card *ngFor="let item of cartProducts">
       <ion-row>
         <ion-col size="4">
@@ -26,16 +26,26 @@
             </ion-row>
             <ion-row>
               <ion-col (click)="deleteProductItem()">
-                <span>
-                  Delete
-                  <ion-icon name="close-circle-outline"></ion-icon>
+                <span class="btn-delete">
+                  Delete &nbsp; <ion-icon name="close-circle-outline"></ion-icon>
                 </span> 
               </ion-col>
             </ion-row>
           </section>
         </ion-col>
       </ion-row>
-    </ion-card>      
+    </ion-card>  
+    
+    <ion-row *ngIf="cartProducts.length > 0" class="total-txt">
+      <h2>Total: {{totalPrice | currency: 'USD'}}</h2> 
+    </ion-row>
+
+    <ion-row *ngIf="cartProducts.length > 0" class="pay-contain">
+      <ion-col size=12>
+        <ion-button expand="block" expand="block">Payment</ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
 </ion-content>

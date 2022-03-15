@@ -5,3 +5,27 @@ img{
 h1{
     text-align: center;
 }
+
+.btn-delete{
+    color: red;
+    display: flex;
+    flex-direction: row;
+    font-size: medium;
+    justify-content: flex-end;
+}
+
+.total-txt{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    font-size: larger;
+    justify-content: flex-end;
+    margin-bottom: -1em;
+    padding: 1em;
+}
+
+.pay-contain{
+    height: 100;
+    width: 100%;
+    padding: 2em;
+}
