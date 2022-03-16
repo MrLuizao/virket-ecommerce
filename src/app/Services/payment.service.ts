@@ -9,7 +9,6 @@ export class PaymentService {
   constructor( public httpClient: HttpClient ) { }
 
   postTokenEcomerce(){
-    debugger
 
     const headers = {
       headers: new HttpHeaders({

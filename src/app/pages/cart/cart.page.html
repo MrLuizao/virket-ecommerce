@@ -9,7 +9,9 @@
 
 <ion-content>
 
-  <ion-grid>
+  <app-loader *ngIf="loading"></app-loader>
+
+  <ion-grid *ngIf="!loading">
     <h1 *ngIf="cartProducts.length == 0"> No items in the cart</h1>
     <ion-card *ngFor="let item of cartProducts">
       <ion-row>
@@ -42,7 +44,7 @@
 
     <ion-row *ngIf="cartProducts.length > 0" class="pay-contain">
       <ion-col size=12>
-        <ion-button expand="block" expand="block" (click)="goPaymentLink()">
+        <ion-button expand="block" expand="block" (click)="getTokenToPay()">
           Go To Checkout
         </ion-button>
       </ion-col>
