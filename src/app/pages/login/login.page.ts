@@ -29,8 +29,8 @@ export class LoginPage implements OnInit {
     this.loginModel = new LoginModel();
     this.segmentView ='login';
 
-    this.loginModel.email = 'test@lvr.test';
-    this.loginModel.password = '#testPass123';
+    // this.loginModel.email = 'test@lvr.test';
+    // this.loginModel.password = '#testPass123';
   }
 
   async login() {
