@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class HomePage implements OnInit {
 
+  loading: boolean;
   listModel = []; 
   arrayProds = [];
 
@@ -18,6 +19,7 @@ export class HomePage implements OnInit {
                 public behaviorSrv: BehaviorService ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.viewProductsList();
   }
 
@@ -28,6 +30,7 @@ export class HomePage implements OnInit {
   viewProductsList(){
     this.productSrv.getProductsList().subscribe( (resp: any) => {
       this.listModel = resp;
+      this.loading = false;
     });
   }
 

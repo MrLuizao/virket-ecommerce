@@ -9,7 +9,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<app-loader *ngIf="loading"></app-loader>
+
+<ion-content *ngIf="!loading">
 
   <ion-grid>
     <ion-row>

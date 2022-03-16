@@ -42,7 +42,9 @@
 
     <ion-row *ngIf="cartProducts.length > 0" class="pay-contain">
       <ion-col size=12>
-        <ion-button expand="block" expand="block">Payment</ion-button>
+        <ion-button expand="block" expand="block" (click)="openModalPayment()">
+          Go To Checkout
+        </ion-button>
       </ion-col>
     </ion-row>
 

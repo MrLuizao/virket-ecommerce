@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { BehaviorService } from 'src/app/Services/behavior.service';
+import { PaymentPage } from '../modals/payment/payment.page';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +14,8 @@ export class CartPage implements OnInit {
   arrayPrices = [];
   totalPrice: number;
 
-  constructor( public behaviorSrv: BehaviorService ) { }
+  constructor(  public behaviorSrv: BehaviorService,
+                public modalController: ModalController ) { }
 
   ngOnInit() {
     this.behaviorSrv.$getArrayList.subscribe( (items)=>{
@@ -27,6 +30,13 @@ export class CartPage implements OnInit {
   deleteProductItem(){
     this.cartProducts.pop()
     this.behaviorSrv.bindingProductsArray(this.cartProducts)
+  }
+
+  async openModalPayment() {
+    const modal = await this.modalController.create({
+      component: PaymentPage,
+    });
+    return await modal.present();
   }
 
 }
