@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { BehaviorService } from 'src/app/Services/behavior.service';
 
 @Component({
@@ -8,14 +10,19 @@ import { BehaviorService } from 'src/app/Services/behavior.service';
 })
 export class CartIconComponent implements OnInit {
 
+  reduxItems$: Observable<any>
   cartProducts = [];
 
-  constructor( public behaviorSrv: BehaviorService ) { }
+  constructor(  public behaviorSrv: BehaviorService,
+                private store: Store<any> ) { }
 
   ngOnInit() {
-    this.behaviorSrv.$getArrayList.subscribe( (items)=>{
-      this.cartProducts = items;
+
+    this.reduxItems$ = this.store.select(store => store.cart);
+    this.reduxItems$.subscribe( (data)=>{
+      this.cartProducts = data;
     });
+
   }
 
 }

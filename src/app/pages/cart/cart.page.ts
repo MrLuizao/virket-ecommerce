@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { CheckoutModel } from 'src/app/Models/checkout.model';
 import { BehaviorService } from 'src/app/Services/behavior.service';
 import { PaymentService } from 'src/app/Services/payment.service';
-import { PaymentPage } from '../modals/payment/payment.page';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,8 @@ import { PaymentPage } from '../modals/payment/payment.page';
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
+
+  reduxObj$: Observable<any>
 
   modelCheckout: CheckoutModel;
   access_token: any;
@@ -23,14 +26,21 @@ export class CartPage implements OnInit {
 
   constructor(  public behaviorSrv: BehaviorService,
                 public paymentService: PaymentService,
-                public modalController: ModalController ) { }
+                public modalController: ModalController,
+                private store: Store<any> ) { }
 
   ngOnInit() {
-    this.behaviorSrv.$getArrayList.subscribe( (items)=>{
-      this.cartProducts = items;
+
+    this.reduxObj$ = this.store.select(store => store.cart);
+    this.reduxObj$.subscribe( (data)=>{
+      console.log('reduxObj$ =>',data);
+      this.cartProducts = data;
+    
       this.arrayPrices = this.cartProducts.map( item => {return item.price});
       this.totalPrice = this.arrayPrices.reduce((a, b) => a + b, 0);
+
     });
+
   }
 
   deleteProductItem(){

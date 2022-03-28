@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMercadopagoModule } from 'ngx-mercadopago';
+import { StoreModule } from '@ngrx/store';
+import { CartReducer } from './Redux/reducers/cart-item.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +36,10 @@ import { NgxMercadopagoModule } from 'ngx-mercadopago';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+
+    StoreModule.forRoot({ cart: CartReducer})
+
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
