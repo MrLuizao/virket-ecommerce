@@ -27,7 +27,7 @@
               <p class="cost-prod"> {{item.price | currency: 'USD'}}</p>          
             </ion-row>
             <ion-row>
-              <ion-col (click)="deleteProductItem()">
+              <ion-col (click)="deleteProductItem(item.id)">
                 <span class="btn-delete">
                   Delete &nbsp; <ion-icon name="close-circle-outline"></ion-icon>
                 </span> 

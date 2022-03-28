@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CheckoutModel } from 'src/app/Models/checkout.model';
+import { DeleteItemAction } from 'src/app/Redux/actions/cart-item.action';
 import { BehaviorService } from 'src/app/Services/behavior.service';
 import { PaymentService } from 'src/app/Services/payment.service';
 
@@ -33,19 +34,15 @@ export class CartPage implements OnInit {
 
     this.reduxObj$ = this.store.select(store => store.cart);
     this.reduxObj$.subscribe( (data)=>{
-      console.log('reduxObj$ =>',data);
       this.cartProducts = data;
-    
       this.arrayPrices = this.cartProducts.map( item => {return item.price});
       this.totalPrice = this.arrayPrices.reduce((a, b) => a + b, 0);
-
     });
 
   }
 
-  deleteProductItem(){
-    this.cartProducts.pop()
-    this.behaviorSrv.bindingProductsArray(this.cartProducts)
+  deleteProductItem(id){
+    this.store.dispatch( new DeleteItemAction(id));
   }
 
   getTokenToPay(){
